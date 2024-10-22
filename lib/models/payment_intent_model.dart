@@ -15,7 +15,7 @@ class PaymentIntentModel {
   String? confirmationMethod;
   int? created;
   String? currency;
-  Null customer;
+  String? customer;
   Null description;
   Null invoice;
   Null lastPaymentError;

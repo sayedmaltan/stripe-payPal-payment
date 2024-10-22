@@ -4,14 +4,14 @@ class ApiStripeServices{
 
   final Dio dio = Dio();
 
-  Future<Response> post({required String url, required Map body,String? contentType,required String auth}) async {
+  Future<Response> post({required String url, required  body,String? contentType,required String token,Map<String,String>? headers}) async {
     var response = await dio.post(
       url,
       data: body,
       options: Options(
           contentType:contentType?? Headers.formUrlEncodedContentType,
-          headers: {
-            'Authorization':'Bearer $auth'
+          headers:headers?? {
+            'Authorization':'Bearer $token'
           }
       ),
     );

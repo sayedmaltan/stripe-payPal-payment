@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_getways/modules/payment_details_view.dart';
 import 'package:payment_getways/modules/widgets/bottom_sheet.dart';
-import 'package:payment_getways/modules/widgets/payment_method.dart';
-import 'package:payment_getways/modules/widgets/payment_method_list_view.dart';
 import 'package:payment_getways/modules/widgets/total_price_item.dart';
 import 'package:payment_getways/shared/componants/custom_widgets/custom_button.dart';
 import 'card_info_item.dart';
