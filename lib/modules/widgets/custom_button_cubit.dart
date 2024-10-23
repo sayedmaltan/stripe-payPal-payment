@@ -6,8 +6,8 @@ import 'package:payment_getways/modules/payment_cubit/payment_states.dart';
 import 'package:payment_getways/modules/thank_you_view.dart';
 import '../../shared/componants/api_key.dart';
 import '../../shared/componants/custom_widgets/custom_button.dart';
-import '../../shared/componants/custom_widgets/functions/execute_paypal_payment.dart';
-import '../../shared/componants/custom_widgets/functions/get_transaction.dart';
+import '../../shared/componants/functions/execute_paypal_payment.dart';
+import '../../shared/componants/functions/get_transaction.dart';
 
 class CustomButtonCubit extends StatelessWidget {
   const CustomButtonCubit({super.key});

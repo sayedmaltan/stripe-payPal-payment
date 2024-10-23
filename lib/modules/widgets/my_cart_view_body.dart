@@ -20,7 +20,7 @@ class MyCartViewBody extends StatelessWidget {
           ),
           const PaymentMethodsBottomSheet(
             info: 'Order Subtotal',
-            price: r'$42.97',
+            price: r'92.17',
           ),
           const SizedBox(
             height: 3,
@@ -41,7 +41,7 @@ class MyCartViewBody extends StatelessWidget {
             color: Color(0xffc7c7c7),
             thickness: 2,
           ),
-          const TotalPriceItem(info: 'Total', price: r'$50.97'),
+          const TotalPriceItem(info: 'Total', price: r'100.17'),
           const SizedBox(
             height: 12,
           ),
