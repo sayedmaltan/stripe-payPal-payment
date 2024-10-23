@@ -26,9 +26,9 @@ class StripeServices {
     required PaymentIntentInputModel paymentIntentInputModel,
   }) async {
     var response = await apiStripeServices.post(
-        url: ApiKey.createPaymentIntentURL,
+        url: ApiKey.stripeCreatePaymentIntentURL,
         body: paymentIntentInputModel.toJson(),
-        token: ApiKey.secretApiKey);
+        token: ApiKey.stripeSecretApiKey);
     return PaymentIntentModel.fromJson(response.data);
   }
 
@@ -50,9 +50,9 @@ class StripeServices {
     required CreateCustomerInputModel createCustomerInputModel,
   }) async {
     var response = await apiStripeServices.post(
-        url: ApiKey.createCustomerURL,
+        url: ApiKey.stripeCreateCustomerURL,
         body: createCustomerInputModel.toJson(),
-        token: ApiKey.secretApiKey);
+        token: ApiKey.stripeSecretApiKey);
     return CreateCustomerModel.fromJson(response.data);
   }
 
@@ -60,11 +60,11 @@ class StripeServices {
     required String customerId,
   }) async {
     var response = await apiStripeServices.post(
-        url: ApiKey.createEphemeralKeyURL,
+        url: ApiKey.stripeCreateEphemeralKeyURL,
         body: {'customer': customerId},
-        token: ApiKey.secretApiKey,
+        token: ApiKey.stripeSecretApiKey,
         headers: {
-          'Authorization': 'Bearer ${ApiKey.secretApiKey}',
+          'Authorization': 'Bearer ${ApiKey.stripeSecretApiKey}',
           'Stripe-Version': '2024-09-30.acacia'
         });
     return EphemeralKeyModel.fromJson(response.data);
@@ -75,12 +75,12 @@ class StripeServices {
     PaymentIntentModel paymentIntentModel = await createPaymentIntent(
         paymentIntentInputModel: paymentIntentInputModel);
     EphemeralKeyModel ephemeralKeyModel = await createEphemeralKey(
-        customerId: ApiKey.customerId,
+        customerId: ApiKey.stripeCustomerId,
     );
     InitPaymentInputSheetModel initPaymentInputSheetModel=InitPaymentInputSheetModel(
       paymentIntentClintSecret:paymentIntentModel.clientSecret!,
       ephemeralKey: ephemeralKeyModel.secret!,
-      customerId: ApiKey.customerId
+      customerId: ApiKey.stripeCustomerId
     );
     await initPaymentSheet(initPaymentInputSheetModel:initPaymentInputSheetModel);
     await presentPaymentSheet();
