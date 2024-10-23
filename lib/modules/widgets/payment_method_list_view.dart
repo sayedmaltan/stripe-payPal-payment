@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_getways/modules/widgets/payment_method.dart';
+
+import '../payment_cubit/payment_cubit.dart';
+import '../payment_cubit/payment_states.dart';
 
 class PaymentMethodListView extends StatefulWidget {
   const PaymentMethodListView({super.key});
@@ -14,32 +18,39 @@ class _PaymentMethodListViewState extends State<PaymentMethodListView> {
     'assets/images/paypal.svg'
   ];
 
-  int activeIndex=0;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 63,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: imagesList.length,
-        itemBuilder: (context, index) =>  InkWell(
-          onTap: () {
-            activeIndex=index;
-            setState(() {
+    return BlocConsumer<PaymentCubit, PaymentStates>(
+      listener: (context, state) {
 
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: PaymentMethod(
-              isActive: activeIndex==index ? true : false,
-              image:imagesList[index] ,
+      },
+      builder: (context, state) {
+        PaymentCubit paymentCubit=PaymentCubit.getCubit(context);
+      return SizedBox(
+        height: 63,
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: imagesList.length,
+          itemBuilder: (context, index) =>  InkWell(
+            onTap: () {
+              paymentCubit.changeActiveIndex(index);
+              setState(() {
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+              child: PaymentMethod(
+                isActive: paymentCubit.activeIndex==index ? true : false,
+                image:imagesList[index] ,
+              ),
             ),
           ),
         ),
-      ),
+      );
+      },
+
     );
   }
 }

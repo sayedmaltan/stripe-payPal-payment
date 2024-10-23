@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_getways/modules/payment_details_view.dart';
 import 'package:payment_getways/modules/widgets/bottom_sheet.dart';
-import 'package:payment_getways/modules/widgets/payment_method.dart';
-import 'package:payment_getways/modules/widgets/payment_method_list_view.dart';
 import 'package:payment_getways/modules/widgets/total_price_item.dart';
 import 'package:payment_getways/shared/componants/custom_widgets/custom_button.dart';
 import 'card_info_item.dart';
@@ -23,7 +20,7 @@ class MyCartViewBody extends StatelessWidget {
           ),
           const PaymentMethodsBottomSheet(
             info: 'Order Subtotal',
-            price: r'$42.97',
+            price: r'92.17',
           ),
           const SizedBox(
             height: 3,
@@ -44,7 +41,7 @@ class MyCartViewBody extends StatelessWidget {
             color: Color(0xffc7c7c7),
             thickness: 2,
           ),
-          const TotalPriceItem(info: 'Total', price: r'$50.97'),
+          const TotalPriceItem(info: 'Total', price: r'100.17'),
           const SizedBox(
             height: 12,
           ),
