@@ -11,3 +11,6 @@ class FailurePaymentState extends PaymentStates{
 
   FailurePaymentState(this.error);
 }
+
+class ChangeActiveIndex extends PaymentStates{}
+

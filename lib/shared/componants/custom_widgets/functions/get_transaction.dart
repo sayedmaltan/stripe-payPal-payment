@@ -1,7 +1,7 @@
 import '../../../../models/paypal_amount_model.dart';
 import '../../../../models/paypal_items_list_model.dart';
 
-({PayPalItemsModel palItemsListModel, PayPalAmountModel payPalAmountModel}) getTransactionData(){
+({PayPalItemsModel palItemsListModel, PayPalAmountModel payPalAmountModel}) getTransactionPayPalData(){
   Details details = Details(shipping: '0', shippingDiscount: 0, subtotal: '100');
   PayPalAmountModel payPalAmountModel = PayPalAmountModel(
     currency: 'USD',

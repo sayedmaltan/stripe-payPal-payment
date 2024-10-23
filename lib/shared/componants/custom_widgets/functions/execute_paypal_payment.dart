@@ -1,11 +1,8 @@
 import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:payment_getways/modules/my_cart_view.dart';
 import 'package:payment_getways/modules/thank_you_view.dart';
-
 import '../../../../models/paypal_amount_model.dart';
 import '../../../../models/paypal_items_list_model.dart';
 import '../../api_key.dart';

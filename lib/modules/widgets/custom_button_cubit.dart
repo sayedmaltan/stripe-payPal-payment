@@ -1,11 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_getways/models/payment_intent_input_model.dart';
-import 'package:payment_getways/models/paypal_amount_model.dart';
-import 'package:payment_getways/models/paypal_items_list_model.dart';
 import 'package:payment_getways/modules/payment_cubit/payment_cubit.dart';
 import 'package:payment_getways/modules/payment_cubit/payment_states.dart';
 import 'package:payment_getways/modules/thank_you_view.dart';
@@ -35,19 +30,25 @@ class CustomButtonCubit extends StatelessWidget {
         }
       },
       builder: (context, state) {
-          // PaymentCubit paymentCubit=PaymentCubit.getCubit(context);
-         // PaymentIntentInputModel paymentIntentInputModel=PaymentIntentInputModel(amount: '100.17',currency:  'USD',customerId:ApiKey.stripeCustomerId );
+        PaymentCubit paymentCubit = PaymentCubit.getCubit(context);
         return CustomButton(
             onTap: () {
-              // paymentCubit.makePayment(paymentIntentInputModel: paymentIntentInputModel);
-              var getTransaction=getTransactionData();
-              executePayPalPayment(context, getTransaction);
+              if (paymentCubit.activeIndex == 0) {
+                PaymentIntentInputModel paymentIntentInputModel =
+                PaymentIntentInputModel(
+                    amount: '100.17',
+                    currency: 'USD',
+                    customerId: ApiKey.stripeCustomerId);
+                paymentCubit.makePayment(
+                    paymentIntentInputModel: paymentIntentInputModel);
+              } else {
+                var getTransaction = getTransactionPayPalData();
+                executePayPalPayment(context, getTransaction);
+              }
             },
             title: 'Continue',
             isLoading: state is LoadingPaymentState ? true : false);
       },
     );
   }
-
-
 }
